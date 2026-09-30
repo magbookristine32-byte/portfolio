@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Kristine's Portfolio</title>
+    <style>
+        :root { --bg: #f1e7d6; --surface: #fffaf1; --text: #35271d; --muted: #786653; --accent: #a45f39; --border: #dfccb1; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: "Trebuchet MS", "Segoe UI", sans-serif; }
+        nav { position: sticky; top: 0; z-index: 20; width: 100%; min-height: 76px; padding: 16px max(20px, calc((100vw - 1064px) / 2)); background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px #35271d14; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+        nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+        nav .links { display: flex; flex-wrap: wrap; gap: 18px; }
+        nav a:hover { color: var(--accent); }
+        nav .back-button { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); white-space: nowrap; }
+        .brand { color: var(--accent); font-size: 20px; }
+        main { max-width: 1120px; min-height: calc(100vh - 130px); margin: auto; padding: 70px 28px 100px; }
+        .eyebrow { color: var(--accent); font-size: 13px; font-weight: 800; text-transform: uppercase; }
+        h1 { margin: 12px 0; font-size: clamp(42px, 7vw, 70px); line-height: 1; }
+        .intro { color: var(--muted); line-height: 1.7; max-width: 580px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 42px; }
+        article { min-height: 235px; padding: 25px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+        .project-image { width: 100%; height: 180px; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 10px; background: #efe2d2; display: grid; place-items: center; color: var(--muted); font-size: 13px; font-weight: 700; overflow: hidden; }
+        .project-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .number { color: var(--accent); font-weight: 800; font-size: 13px; }
+        h2 { margin: 28px 0 10px; font-size: 22px; }
+        article p { color: var(--muted); line-height: 1.65; font-size: 14px; }
+        .tags { color: var(--accent); font-size: 12px; font-weight: 700; }
+        @media (max-width: 760px) { nav { padding: 16px 20px; flex-wrap: wrap; } nav .links { order: 3; width: 100%; gap: 14px; } main { padding: 50px 22px 70px; } .grid { grid-template-columns: 1fr; } }
+    </style>
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <nav>
+        <a class="back-button" data-back-button href="index.html"><span aria-hidden="true">←</span> Back</a>
+        <a class="brand" href="index.html"><span class="brand-name">Kristine</span>'s Portfolio</a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html" aria-current="page">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    <main>
+        <p class="eyebrow">Selected work</p>
+        <h1>My Projects</h1>
+        <p class="intro">A few projects that reflect my growing skills in front-end development, system interfaces, and practical digital solutions.</p>
+        <div class="grid">
+            <article>
+                <div class="project-image">
+                    <img src="picture/Database.png" alt="Kids Learning System">
+                </div>
+                <span class="number">01 / Database System</span>
+                <h2>Kids Learning System</h2>
+                <p>This Microsoft Access Database System was one of the projects I created during my first year as an IT student. It is a Kids Learning System designed to make learning more fun and interactive for children. The system allows kids to learn the alphabet, draw, and listen to songs they enjoy. Through this project, I gained experience in database management and designing a simple, user-friendly learning system.</p>
+                <span class="tags">MS Access</span>
+            </article>
+            <article>
+                <div class="project-image">
+                    <img src="picture/portfolio.png" alt="My Portfolio Website">
+                </div>
+                <span class="number">02 / Portfolio</span>
+                <h2>Portfolio</h2>
+                <p>This portfolio showcases my skills, projects, and experiences as an Information Technology student. It serves as a collection of the websites, applications, and systems I have developed throughout my studies and projects.</p>
+                <p>The portfolio highlights my knowledge in web development, programming, database management, and user interface design. It also demonstrates my ability to apply what I have learned in school to create functional and user-friendly digital solutions.</p>
+                <p>Through this portfolio, I aim to present my growth as an IT student, showcase my creativity and technical skills, and provide an overview of the projects I have worked on.</p>
+                <span class="tags">HTML · CSS · JavaScript</span>
+            </article>
+        </div>
+    </main>
+    <script src="profile.js"></script>
+</body>
+</html>

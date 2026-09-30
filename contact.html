@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Kristine's Portfolio</title>
+    <style>
+        :root { --bg: #f1e7d6; --surface: #fffaf1; --text: #35271d; --muted: #786653; --accent: #a45f39; --border: #dfccb1; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: "Trebuchet MS", "Segoe UI", sans-serif; }
+        nav { position: sticky; top: 0; z-index: 20; width: 100%; min-height: 76px; padding: 16px max(20px, calc((100vw - 1064px) / 2)); background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px #35271d14; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+        nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+        nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
+        nav .links { display: flex; flex-wrap: wrap; gap: 18px; }
+        nav .back-button { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); white-space: nowrap; }
+        .brand { color: var(--accent); font-size: 20px; }
+        main { max-width: 1000px; min-height: calc(100vh - 130px); margin: auto; padding: 65px 28px 100px; }
+        .eyebrow { color: var(--accent); font-size: 13px; font-weight: 800; text-transform: uppercase; }
+        h1 { margin: 12px 0; font-size: clamp(42px, 7vw, 68px); }
+        .contact-box { max-width: 700px; margin-top: 36px; padding: 36px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+        .contact-box p { color: var(--muted); line-height: 1.75; }
+        .phone-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--text); text-decoration: none; font-weight: 700; }
+        .social-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+        .social-links a, .social-links .social-icon { width: 42px; height: 42px; display: grid; place-items: center; color: var(--accent); background: var(--bg); border: 1px solid var(--border); border-radius: 50%; text-decoration: none; font-size: 23px; line-height: 1; transition: transform .18s ease, border-color .18s ease; }
+        .social-links a, .social-links .social-icon { position: relative; }
+        .social-links a:hover, .social-links a:focus-visible, .social-links .social-icon:hover, .social-links .social-icon:focus-visible { transform: translateY(-2px); border-color: var(--accent); }
+        .social-links [data-contact]::after { content: attr(data-contact); position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 2; width: max-content; max-width: 240px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); font-size: 12px; font-weight: 700; line-height: 1.3; opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .18s ease, transform .18s ease; }
+        .social-links [data-contact]:hover::after, .social-links [data-contact]:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+        .social-links .facebook-icon { color: #1877f2; font-family: Arial, sans-serif; font-size: 29px; font-weight: 800; }
+        .social-links .tiktok-icon { color: #111; font-size: 24px; font-weight: 800; }
+        .social-links a[hidden] { display: none; }
+        @media (max-width: 760px) { nav { padding: 16px 20px; flex-wrap: wrap; } nav .links { order: 3; width: 100%; gap: 14px; } main { padding: 48px 22px 70px; } .contact-box { padding: 25px; } }
+    </style>
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <nav>
+        <a class="back-button" data-back-button href="index.html"><span aria-hidden="true">←</span> Back</a>
+        <a class="brand" href="index.html"><span class="brand-name">Kristine</span>'s Portfolio</a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html" aria-current="page">Contact</a>
+        </div>
+    </nav>
+    <main>
+        <p class="eyebrow">Get in touch</p>
+        <h1>Contact</h1>
+        <div class="contact-box">
+            <h2>Let's Connect</h2>
+            <p>I'm open to freelance opportunities, collaborative projects, and internship opportunities where I can apply my web development and design skills.</p>
+            <a class="phone-link" href="tel:09817549824" aria-label="Call 09817549824"><span aria-hidden="true">☎</span> 09817549824</a>
+            <div class="social-links" aria-label="Social media and email links">
+                <a class="social-icon" data-contact="Facebook: Kristine Jardino" href="https://www.facebook.com/public/Kristine-Jardino" target="_blank" rel="noopener noreferrer" aria-label="Facebook: Kristine Jardino"><span class="facebook-icon" aria-hidden="true">f</span></a>
+                <a class="social-icon" data-contact="Instagram: _lechonkawali0011" href="https://instagram.com/_lechonkawali0011" target="_blank" rel="noopener noreferrer" aria-label="Instagram: _lechonkawali0011"><span aria-hidden="true">📸</span></a>
+                <a class="social-icon" data-contact="TikTok: @akame7068" href="https://www.tiktok.com/@akame7068" target="_blank" rel="noopener noreferrer" aria-label="TikTok: @akame7068"><span class="tiktok-icon" aria-hidden="true">♪</span></a>
+                <a class="social-icon" data-contact="Email: magbookristine32@gmail.com" href="mailto:magbookristine32@gmail.com" aria-label="Email: magbookristine32@gmail.com"><span aria-hidden="true">✉️</span></a>
+            </div>
+        </div>
+    </main>
+    <script src="profile.js"></script>
+</body>
+</html>

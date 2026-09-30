@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Kristine's Portfolio</title>
+    <style>
+        :root { --bg: #fdf2f6; --surface: #fffafc; --text: #3f2d2f; --muted: #7f5f68; --accent: #c86d8d; --border: #f2d5df; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: "Trebuchet MS", "Segoe UI", sans-serif; }
+        nav { position: sticky; top: 0; z-index: 20; width: 100%; min-height: 76px; padding: 16px max(20px, calc((100vw - 1064px) / 2)); background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px #35271d14; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+        nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+        nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
+        nav .links { display: flex; flex-wrap: wrap; gap: 18px; }
+        nav .back-button { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); white-space: nowrap; }
+        .brand { color: var(--accent); font-size: 20px; }
+        main { max-width: 1000px; min-height: calc(100vh - 130px); margin: auto; padding: 65px 28px 100px; }
+        .eyebrow { color: var(--accent); font-size: 13px; font-weight: 800; text-transform: uppercase; }
+        h1 { margin: 12px 0; font-size: clamp(42px, 7vw, 68px); }
+        .intro { color: var(--muted); line-height: 1.7; max-width: 680px; }
+        .about-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 38px; }
+        .info-card { padding: 26px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+        .info-card h2 { margin: 0 0 12px; font-size: 22px; }
+        .info-card p { margin: 0; color: var(--muted); line-height: 1.75; }
+        .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+        .skill { padding: 8px 11px; border-radius: 999px; background: #eee0cd; color: #805338; font-size: 13px; font-weight: 700; }
+        .skills-section { margin-top: 36px; padding: 26px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+        .skills-section h2 { margin: 0 0 22px; font-size: 22px; }
+        .skills-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+        .skills-group h3 { margin: 0 0 12px; color: var(--muted); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+        .skills-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+        .skills-tag { padding: 8px 11px; border: 1px solid var(--border); border-radius: 5px; background: #eaf1f2; color: var(--text); font-size: 13px; font-weight: 700; }
+        .details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; margin-top: 36px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+        .detail { min-width: 0; }
+        .detail dt { color: var(--muted); font-size: 13px; font-weight: 700; }
+        .detail dd { margin: 5px 0 0; overflow-wrap: anywhere; font-weight: 700; }
+        .education-section { margin-top: 36px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+        .education-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+        .education-header h2 { margin: 0; font-size: 22px; }
+        .education-list { display: grid; gap: 16px; }
+        .education-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: #f9f2ea; }
+        .education-badge { flex: 0 0 52px; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 12px; background: var(--bg); color: var(--accent); font-size: 22px; box-shadow: inset 0 0 0 1px var(--border); overflow: hidden; }
+        .education-badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .education-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .education-name { color: var(--text); font-weight: 800; line-height: 1.4; }
+        .education-years { color: var(--muted); font-size: 14px; font-weight: 700; }
+        .experience-trigger { position: relative; display: block; width: 100%; text-align: left; cursor: pointer; transition: border-color .18s ease, transform .18s ease; }
+        .experience-trigger:hover, .experience-trigger:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+        .experience-cue { display: inline-block; margin-top: 18px; color: var(--accent); font-size: 13px; font-weight: 800; }
+        .experience-dialog { width: min(880px, calc(100% - 32px)); max-width: none; max-height: calc(100% - 32px); padding: 0; overflow: auto; border: 0; background: transparent; }
+        .experience-dialog::backdrop { background: rgb(35 22 30 / 38%); backdrop-filter: blur(9px); }
+        .experience-dialog-panel { padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); box-shadow: 0 24px 80px rgb(35 22 30 / 24%); }
+        .experience-dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+        .experience-dialog-header h2 { margin: 0; font-size: 25px; }
+        .experience-dialog-header p { margin: 0 0 6px; color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+        .experience-dialog-copy { margin: 0; color: var(--muted); line-height: 1.7; }
+        .dialog-close { width: 40px; height: 40px; flex: 0 0 40px; border: 1px solid var(--border); border-radius: 50%; background: var(--bg); color: var(--text); font-size: 24px; cursor: pointer; }
+        .experience-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .experience-gallery figure { min-width: 0; margin: 0; }
+        .experience-gallery img, .gallery-empty { width: 100%; aspect-ratio: 4 / 3; display: grid; place-items: center; border-radius: 9px; background: #e9decd; object-fit: cover; color: var(--muted); }
+        .experience-gallery img[hidden] { display: none; }
+        .gallery-empty[hidden] { display: none; }
+        .experience-gallery figcaption { margin-top: 9px; color: var(--muted); font-size: 13px; }
+        .skills-dialog { width: min(620px, calc(100% - 32px)); }
+        .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap: 12px; margin-top: 20px; }
+        .skill-logo { aspect-ratio: 1; min-width: 0; display: grid; place-items: center; padding: 15px; border: 1px solid var(--border); border-radius: 10px; background: white; animation: skill-float 3.4s ease-in-out infinite; }
+        .skill-logo:nth-child(3n + 2) { animation-delay: -1.1s; }
+        .skill-logo:nth-child(3n) { animation-delay: -2.2s; }
+        .skill-logo:hover { animation-play-state: paused; }
+        .skill-logo img { width: 100%; height: 100%; max-width: 48px; max-height: 48px; object-fit: contain; }
+        .skill-logo img[hidden] { display: none; }
+        @keyframes skill-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @media (prefers-reduced-motion: reduce) { .skill-logo { animation: none; } }
+        @media (max-width: 900px) { .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 760px) { nav { padding: 16px 20px; flex-wrap: wrap; } nav .links { order: 3; width: 100%; gap: 14px; } main { padding: 48px 22px 70px; } .details { grid-template-columns: 1fr; } .skills-groups { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .experience-dialog-panel { padding: 20px; } .experience-gallery { grid-template-columns: 1fr; } }
+    </style>
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <nav>
+        <a class="back-button" data-back-button href="index.html"><span aria-hidden="true">←</span> Back</a>
+        <a class="brand" href="index.html"><span class="brand-name">Kristine</span>'s Portfolio</a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="about.html" aria-current="page">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    <main>
+        <p class="eyebrow">A little about me</p>
+        <h1>About Me</h1>
+        <p class="intro">I’m a student and aspiring IT professional focused on web development, design, and building simple but effective digital solutions.</p>
+        <div class="about-grid">
+            <article class="info-card experience-trigger" data-dialog-open="experience-dialog" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="experience-dialog" aria-label="Open My Experience photo gallery">
+                <h2>My Experience</h2>
+                <p>Currently employed as a Service Crew Member at McDonald’s GMA 1010 while pursuing my studies in Information Technology. My experience has strengthened my communication, teamwork, customer service, and time-management skills in a fast-paced environment.</p>
+                <span class="experience-cue">View experience photos ↗</span>
+            </article>
+            <article class="info-card experience-trigger" data-dialog-open="skills-dialog" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="skills-dialog" aria-label="Open tools">
+                <h2>Tools</h2>
+                <p>Web design, programming, and mobile development.</p>
+                <span class="experience-cue">View my tools ↗</span>
+            </article>
+        </div>
+
+        <section class="skills-section" aria-labelledby="skills-title">
+            <h2 id="skills-title">Skills</h2>
+            <div class="skills-groups">
+                <div class="skills-group">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-tags">
+                        <span class="skills-tag">HTML</span>
+                        <span class="skills-tag">CSS</span>
+                        <span class="skills-tag">JavaScript</span>
+                        <span class="skills-tag">PHP</span>
+                        <span class="skills-tag">MySQL</span>
+                        <span class="skills-tag">UI/UX Design</span>
+                        <span class="skills-tag">Database Management</span>
+                        <span class="skills-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <h3>Professional Skills</h3>
+                    <div class="skills-tags">
+                        <span class="skills-tag">Problem Solving</span>
+                        <span class="skills-tag">Teamwork & Collaboration</span>
+                        <span class="skills-tag">Communication</span>
+                        <span class="skills-tag">Time Management</span>
+                        <span class="skills-tag">Adaptability</span>
+                        <span class="skills-tag">Attention to Detail</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="education-section" aria-labelledby="education-title">
+            <div class="education-header">
+                <h2 id="education-title">Educational Background</h2>
+            </div>
+            <div class="education-list">
+                <div class="education-item">
+                    <span class="education-badge" aria-label="San Gabriel III Elementary School logo">
+                        <img src="picture/SGIII.jpg" alt="San Gabriel III Elementary School logo">
+                    </span>
+                    <div class="education-text">
+                        <span class="education-name">San Gabriel III Elementary School</span>
+                        <span class="education-years">2011 - 2017</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <span class="education-badge" aria-label="General Mariano Alvares Technical High School logo">
+                        <img src="picture/GMATHS.jpg" alt="General Mariano Alvares Technical High School logo">
+                    </span>
+                    <div class="education-text">
+                        <span class="education-name">General Mariano Alvares Technical High School</span>
+                        <span class="education-years">2017 - 2021</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <span class="education-badge" aria-label="My Messiah School of Cavite INC. logo">
+                        <img src="PICTURE/MMS.jpg" alt="My Messiah School of Cavite INC. logo">
+                    </span>
+                    <div class="education-text">
+                        <span class="education-name">My Messiah School of Cavite INC.</span>
+                        <span class="education-years">2021 - 2023</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <span class="education-badge" aria-label="Eulogio Amang Rodriguez Science and Technology Cavite Campus logo">
+                        <img src="picture/EARIST.jpg" alt="Eulogio Amang Rodriguez Science and Technology Cavite Campus logo">
+                    </span>
+                    <div class="education-text">
+                        <span class="education-name">Eulogio "Amang" Rodriguez Science and Technology Cavite Campus</span>
+                        <span class="education-years">2023 - Present</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <dl class="details" aria-label="Personal information">
+            <div class="detail"><dt>Age</dt><dd data-profile-value="age">Not added yet</dd></div>
+            <div class="detail"><dt>Date of Birth</dt><dd data-profile-value="dateOfBirth">Not added yet</dd></div>
+            <div class="detail"><dt>Course / Year</dt><dd data-profile-value="course">Not added yet</dd></div>
+            <div class="detail"><dt>Address</dt><dd data-profile-value="address">Not added yet</dd></div>
+        </dl>
+    </main>
+    <dialog class="experience-dialog" id="experience-dialog" data-about-dialog aria-labelledby="experience-dialog-title">
+        <div class="experience-dialog-panel">
+            <div class="experience-dialog-header">
+                <div>
+                    <p>Gallery</p>
+                    <h2 id="experience-dialog-title">My Experience</h2>
+                </div>
+                <button class="dialog-close" type="button" data-dialog-close aria-label="Close gallery">×</button>
+            </div>
+            <p class="experience-dialog-copy"><strong>McDonald's GMA 1010</strong><br><strong>Service Crew Member | Currently Employed</strong><br><br>I am currently working as a crew member at McDonald’s GMA 1010. My responsibilities include assisting customers, taking and preparing orders, maintaining cleanliness and organization, handling payments, and working with team members to provide efficient and friendly service. This experience has helped me develop strong communication, teamwork, time-management, customer-service, and problem-solving skills while working in a fast-paced environment.</p>
+            <hr style="margin: 24px 0; border: 0; border-top: 1px solid var(--border);">
+            <p class="experience-dialog-copy"><strong>Undergraduate IT Student</strong><br><br>I am an IT student currently working as a crew member at McDonald’s GMA 1010. Balancing my studies and work has helped me develop strong time-management, communication, teamwork, and problem-solving skills. I am continuously improving my knowledge and skills in programming, web development, database management, and other areas of technology, including Arduino.
+
+As a fourth-year student, I am also currently working on our thesis, which involves developing a web-based system for the Municipality of General Mariano Alvarez (GMA). Our research focuses on financial assistance programs and aims to develop a system that can help manage and provide information about financial aid for the GMA community. Through this experience, I am gaining valuable knowledge in research, web development, system design, and real-world problem-solving. </p>
+            <div class="experience-gallery">
+                <figure>
+                    <img src="picture/student.jpg" data-experience-photo="0" alt="Experience photo 1" hidden>
+                    <div class="gallery-empty" data-experience-placeholder="0">Photo 1</div>
+                    
+                </figure>
+                <figure>
+                    <img src="picture/mcdo.jpg" data-experience-photo="1" alt="Experience photo 2" hidden>
+                    <div class="gallery-empty" data-experience-placeholder="1">Photo 2</div>
+                  
+                </figure>
+                <figure>
+                    <img src="picture/thesis.jpg" data-experience-photo="2" alt="Experience photo 3" hidden>
+                    <div class="gallery-empty" data-experience-placeholder="2">Photo 3</div>
+    
+                </figure>
+            </div>
+        </div>
+    </dialog>
+    <dialog class="experience-dialog skills-dialog" id="skills-dialog" data-about-dialog aria-labelledby="skills-dialog-title">
+        <div class="experience-dialog-panel">
+            <div class="experience-dialog-header">
+                <div>
+                    <p>What I work with</p>
+                    <h2 id="skills-dialog-title">Tools</h2>
+                </div>
+                <button class="dialog-close" type="button" data-dialog-close aria-label="Close tools">×</button>
+            </div>
+            <div class="skills-list" aria-label="Tools">
+                <span class="skill-logo" role="img" aria-label="HTML" title="HTML"><img src="picture/html.jpg" alt="HTML"></span>
+                <span class="skill-logo" role="img" aria-label="CSS" title="CSS"><img src="picture/css.jpg" alt="CSS"></span>
+                <span class="skill-logo" role="img" aria-label="JavaScript" title="JavaScript"><img src="picture/js.jpg" alt="JavaScript"></span>
+                <span class="skill-logo" role="img" aria-label="PHP" title="PHP"><img src="picture/php.jpg" alt="PHP"></span>
+                <span class="skill-logo" role="img" aria-label="MySQL" title="MySQL"><img src="picture/mysql.jpg" alt="MySQL"></span>
+                <span class="skill-logo" role="img" aria-label="C++" title="C++"><img src="picture/cplus.jpg" alt="C++"></span>
+                <span class="skill-logo" role="img" aria-label="C sharp" title="C#"><img src="picture/csharp.jpg" alt="C#"></span>
+                <span class="skill-logo" role="img" aria-label="Google" title="Google"><img src="picture/google.jpg" alt="Google"></span>
+                <span class="skill-logo" role="img" aria-label="Microsoft Word" title="Microsoft Word"><img src="picture/word.jpg" alt="Microsoft Word"></span>
+                <span class="skill-logo" role="img" aria-label="Xampp" title="Xampp"><img src="picture/xampp.jpg" alt="Xampp"></span>
+                <span class="skill-logo" role="img" aria-label="Microsoft Excel" title="Microsoft Excel"><img src="picture/excel.jpg" alt="Microsoft Excel"></span>
+                <span class="skill-logo" role="img" aria-label="Microsoft Access" title="Microsoft Access"><img src="picture/access.jpg" alt="Microsoft Access"></span>
+                <span class="skill-logo" role="img" aria-label="Canva" title="Canva"><img src="picture/canva.jpg" alt="Canva"></span>
+                <span class="skill-logo" role="img" aria-label="CapCut" title="CapCut"><img src="picture/capcut.jpg" alt="CapCut"></span>
+            </div>
+        </div>
+    </dialog>
+    <script src="profile.js"></script>
+</body>
+</html>

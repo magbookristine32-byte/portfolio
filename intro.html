@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome | Kristine's Portfolio</title>
+<link rel="stylesheet" href="portfolio.css">
+<style>
+    body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+            radial-gradient(circle at 15% 15%, #f8d9e3 0, transparent 28%),
+            radial-gradient(circle at 85% 85%, #ead8bf 0, transparent 30%),
+            var(--bg);
+    }
+
+    .welcome {
+        width: min(100%, 760px);
+        padding: clamp(42px, 8vw, 84px) clamp(26px, 7vw, 76px);
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgb(255 250 252 / 88%);
+        box-shadow: 0 24px 60px rgb(63 45 47 / 12%);
+    }
+
+    .welcome-mark {
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 26px;
+        border: 1px solid var(--accent);
+        border-radius: 50%;
+        color: var(--accent);
+        background: var(--surface);
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .welcome h1 {
+        max-width: none;
+        margin: 0 0 18px;
+        color: var(--text);
+        font-size: clamp(36px, 7vw, 64px);
+        letter-spacing: -2px;
+        line-height: 1.05;
+    }
+
+    .welcome p {
+        max-width: 520px;
+        margin: 0 auto 30px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    .welcome .btn {
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+    <main class="welcome">
+        <div class="welcome-mark" aria-hidden="true">KJ</div>
+        <h1>Welcome to my portfolio Website</h1>
+        <p>Discover my projects, skills, educational background, and experience.</p>
+        <a class="btn primary" href="index.html">View me</a>
+    </main>
+</body>
+</html>
